@@ -1,13 +1,19 @@
-const user = (state = {}, action) => {
+import { saveUserToken, clearUserToken } from '../utils/localStorage';
+
+const userInitialState = {};
+
+const user = (state = userInitialState, action) => {
     switch (action.type) {
         case 'USER_SIGN_IN_SUCCESS':
-            console.log('here', action.payload)
+            saveUserToken(action.payload.token);  // TODO: Сохранение в LocalStorage должно быть здесь?
             return action.payload;
         case 'USER_LOG_OUT':
-            return null;
+            clearUserToken();
+            return userInitialState;
         default:
             return state
     }
 };
+
 export default user;
 

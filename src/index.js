@@ -1,11 +1,11 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
 import rootReducer from './reducers';
-import authSaga from './sagas/authorisation';
+import rootSaga from './sagas';
 import App from './App'
 
 const sagaMiddleware = createSagaMiddleware();
@@ -15,7 +15,7 @@ const store = createStore(
     applyMiddleware(sagaMiddleware),
 );
 
-sagaMiddleware.run(authSaga);
+sagaMiddleware.run(rootSaga);
 
 render(
     <Provider store={store}>

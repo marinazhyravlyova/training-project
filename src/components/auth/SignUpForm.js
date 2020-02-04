@@ -1,75 +1,57 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useCorrectSubmit } from '../../utils/form';
+
 const Container = styled.div`
     margin: ${({ big }) => big ? '20px' : 'unset'};
 `;
 
 const UserDataForm = ({ onSubmit }) => {
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        const { age, height, weight, gender } = e.target.elements;
-        onSubmit({
-            age: age.value,
-            height: height.value,
-            weight: weight.value,
-            gender: gender.value,
-        });
-    };
+    const handleSubmit = useCorrectSubmit(onSubmit);
 
     return (
         <form onSubmit={handleSubmit}>
             {/*<Container big>Sign Up</Container>*/}
             <div>
                 <label>Gender:</label>
-                <input name="gender"/>
+                <input name="gender" required/>
             </div>
             <div>
                 <label>Age:</label>
-                <input name="age"/>
+                <input name="age" required/>
             </div>
             <div>
                 <label>Height:</label>
-                <input name="height"/>
+                <input name="height" required/>
             </div>
             <div>
                 <label>Weight:</label>
-                <input name="weight"/>
+                <input name="weight" required/>
             </div>
             <input type="submit" value="Submit" />
         </form>
     );
 };
 
-export const ContactsForm = ({ onSubmit }) => {
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        const { name, email, password, repeatPassword } = e.target.elements;
-        onSubmit({
-            name: name.value,
-            email: email.value,
-            password: password.value,
-            repeatPassword: repeatPassword.value,
-        });
-    };
+const ContactsForm = ({ onSubmit }) => {
+    const handleSubmit = useCorrectSubmit(onSubmit);
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Name: <input name="name"/></label>
+                <label>Name: <input name="name" required/></label>
             </div>
             <div>
-                <label>Email: <input name="email"/></label>
+                <label>Email: <input name="email" required/></label>
             </div>
             <div>
                 <label>Password:</label>
-                <input name="password"/>
+                <input name="password" required/>
             </div>
             <div>
                 <label>Repeat Password:</label>
-                <input name="repeatPassword"/>
+                <input name="repeatPassword" required/>
             </div>
             <input type="submit" value="Submit" />
         </form>

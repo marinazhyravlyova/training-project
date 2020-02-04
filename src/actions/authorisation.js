@@ -12,3 +12,12 @@ export const signInSuccess = userData => ({
     type: 'USER_SIGN_IN_SUCCESS',
     payload: userData,
 });
+
+export const authorize = userToken => ({
+    type: 'USER_AUTHORIZE',
+    payload: userToken,
+})
+
+export const logOut = () => ({
+    type: 'USER_LOG_OUT',
+})

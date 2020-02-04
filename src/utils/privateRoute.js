@@ -10,13 +10,13 @@ function PrivateRoute({ isAuthenticated, children, ...rest }) {
                 isAuthenticated ? (
                     children
                 ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/sign-in",
-                            state: { from: location }
-                        }}
-                    />
-                )
+                        <Redirect
+                            to={{
+                                pathname: "/sign-in",
+                                state: { from: location }
+                            }}
+                        />
+                    )
             }
         />
     );

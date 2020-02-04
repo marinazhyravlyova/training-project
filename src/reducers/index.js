@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import todos from './todos';
 import user from './user';
+import products from './products';
+import meals from './meals';
 
 export default combineReducers({
-    todos,
     user,
+    products,
+    meals,
 })
